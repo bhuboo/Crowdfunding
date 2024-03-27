@@ -1,0 +1,125 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+.useformik-error {
+  width: 50%;
+  font-size: 12px;
+  background-color: rgba(255, 0, 0, 0.568);
+  color: white;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.profile-style {
+  max-width: 50px;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #51B56D;
+  border-radius: 16%;
+}
+
+.post-Container {
+  border: 1px solid #51B56D;
+  padding-left: 6px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 12px;
+  align-items: center;
+}
+
+.post-Container small {
+  padding-left: 4px;
+  font-size: 14px;
+}
+
+.subcontainer-post button {
+  background: #51B56D;
+  border-radius: 8px;
+  border: 1px solid lightgreen;
+  color: whitesmoke;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.postmaincontainer {
+  margin-top: 10px;
+  padding: 4px 10px;
+  border: 4px solid #51B56D;
+  border-radius: 18px;
+}
+
+.buttoncustom {
+  background: #51B56D;
+  border-radius: 8px;
+  border: 1px solid lightgreen;
+  color: whitesmoke;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.Chatbox_input_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px 6px 12px;
+  position: sticky;
+  bottom: 0%;
+  background: #51B56D;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.Chatbox_input_container textarea {
+  border-radius: 10px;
+  height: 40px;
+  padding: 2px 6px 2px 6px;
+  font-size: 13px;
+  max-height: 80px;
+  min-height: 40px;
+  width: 80%;
+}
+
+.Chatbox_input_container_p {
+  position: relative;
+  align-self: start;
+  width: auto;
+  min-width: 30%;
+  max-width: 70%;
+  background: #cae8d3;
+  color: #000000;
+  padding: 4px 6px 4px 4px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.Chatbox_input_container_p small {
+  float: right;
+  bottom: 0px;
+  color: gray;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-top-left-radius: 6px;
+}
+
+.customcssfooter li a {
+  font-weight: bold;
+  font-size: 18px;
+  color: #1b1b1b !important;
+}
+
+.customcssfooter li {
+  padding: 1px 16px 1px 16px !important;
+  /* border: 1px solid #51B56D; */
+  border-radius: 12px;
+  box-shadow: rgba(38, 57, 77, 0.623) 0px 20px 30px -10px;
+}
