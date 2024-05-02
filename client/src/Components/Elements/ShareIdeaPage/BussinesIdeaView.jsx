@@ -159,7 +159,7 @@ export default function BussinessIdeaView({ ModalViewClose, Id }) {
                                                                     name="Abstract"
                                                                     rows="3"
                                                                     value={Details.Abstract}
-                                                                    style={Details.BussinessIdeaDocument.length == 0 ? { minHeight: 280 } : {}}
+                                                                    style={Details.BussinessIdeaDocument.length == 0 ? { minHeight: 280 } : { minHeight: 280 }}
                                                                 ></textarea>
                                                             </div>
                                                         </div>
@@ -171,7 +171,7 @@ export default function BussinessIdeaView({ ModalViewClose, Id }) {
                                                                     id="BussinessIdeaDes"
                                                                     name="BussinessIdeaDes"
                                                                     rows="3"
-                                                                    style={Details.BussinessIdeaDocument.length == 0 ? { minHeight: 280 } : {}}
+                                                                    style={Details.BussinessIdeaDocument.length == 0 ? { minHeight: 280 } : { minHeight: 280 }}
                                                                     value={Details.BussinessIdeaDes}
                                                                 ></textarea>
                                                             </div>

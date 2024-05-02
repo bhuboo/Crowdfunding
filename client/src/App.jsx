@@ -12,6 +12,10 @@ import BussinessIdeaPost from './Components/Enterprenuer/BussinessIdea/Bussiness
 import BussinessIdeaview from './Components/Enterprenuer/BussinessIdeaview/Bussinessview.jsx';
 import FindInnovator from './Components/mainpages/Connect/FindInnovator.jsx';
 import Chat from './Components/mainpages/Connect/Chat.jsx';
+import Forgetpasswordemail from './Components/mainpages/ForgetPassword/Forgetpasswordemail.jsx';
+import VerifyOtp from './Components/mainpages/ForgetPassword/VerifyOtp.jsx';
+import 'react-toastify/dist/ReactToastify.css';
+import Newpassword from './Components/mainpages/ForgetPassword/Newpassword.jsx';
 function App() {
 
   axios.defaults.baseURL = 'http://localhost:8080/api/';
@@ -105,6 +109,24 @@ function App() {
                 <ProtectedRoute>
                   <Chat />
                 </ProtectedRoute>
+              }
+            />
+            <Route
+              path='Fpemail'
+              element={
+                <Forgetpasswordemail />
+              }
+            />
+            <Route
+              path='verifyotp'
+              element={
+                <VerifyOtp />
+              }
+            />
+            <Route
+              path='newpassword'
+              element={
+                <Newpassword />
               }
             />
           </Route>

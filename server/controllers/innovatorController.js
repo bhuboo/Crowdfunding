@@ -187,7 +187,7 @@ const BussinessIdeaPostget = async (req, res, next) => {
 
         const intrestSend = await db.messages.count({
             where: {
-                bussinessDocumentId: data.Id
+                bussinessDocumentId: data.Id, receiverId: data.UserId
             }
         })
         let responseobject = {
@@ -236,6 +236,22 @@ const BussinessIdeaPostUpdate = async (req, res, next) => {
         console.log(error);
     }
 }
+
+const BussinessIdeaDelete = async (req, res, next) => {
+    try {
+
+        await db.bussinessIdea.destroy({
+            where: {
+                id: req.body.documentId, UserId: req.body.UserId
+            },
+        });
+
+        res.status(200).send({ Status: true, message: "Bussiness Idea Delete successfully" })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const BussinessIdeaDocumentBAse64get = async (req, res, next) => {
     try {
         const data = req.body;
@@ -310,5 +326,6 @@ module.exports = {
     BussinessIdeaPost,
     BussinessIdeaPostget,
     BussinessIdeaDocumentBAse64get,
-    BussinessIdeaPostUpdate
+    BussinessIdeaPostUpdate,
+    BussinessIdeaDelete
 }

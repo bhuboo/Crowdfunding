@@ -36,3 +36,48 @@ export const followrequestapi = async (e) => {
 
     return response;
 }
+
+
+export const forgetpassword = async (e) => {
+
+    let objectbody = {
+        email: e,
+    }
+
+    const headers = {
+        'Content-Type': 'application/json' // Adjust content type if needed
+    };
+    const response = await axios.post("/auth/forget", objectbody, { headers });
+
+    return response;
+}
+
+export const forgetpasswordOTP = async (e, email) => {
+
+    let objectbody = {
+        email: email,
+        OTP: e,
+    }
+
+    const headers = {
+        'Content-Type': 'application/json' // Adjust content type if needed
+    };
+    const response = await axios.post("/auth/forgetOTP", objectbody, { headers });
+
+    return response;
+}
+
+export const forgetpasswordChange = async (e, email) => {
+
+    let objectbody = {
+        email: email,
+        Password: e,
+    }
+
+    const headers = {
+        'Content-Type': 'application/json' // Adjust content type if needed
+    };
+    const response = await axios.post("/auth/forgetPasschange", objectbody, { headers });
+
+    return response;
+}

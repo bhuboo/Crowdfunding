@@ -4,7 +4,7 @@ const { Op } = require('sequelize');
 
 const db = require("../models");
 
-
+const { sendmail } = require('../utils/sendmail');
 //create model
 const Users = db.users;
 
@@ -125,7 +125,174 @@ const login = async (req, res, next) => {
     }
 };
 
+
+const forgetemail = async (req, res, next) => {
+    try {
+
+        const requiredFields = ['email'];
+        for (const field of requiredFields) {
+            if (!req.body[field]) {
+                return res.status(400).json({ error: `${field} is required.` });
+            }
+        }
+
+        const user = await Users.findOne({
+            where: {
+                [Op.or]: [
+                    { email: req.body.email },
+                ]
+            }
+        });
+
+
+
+        if (!user) return res.status(404).send({ message: "User not found!" });
+
+        if (!user.isActive) {
+            return res.status(400).send({ message: "sorry to inform you that your account has been temporarily blocked by the administrator.!" });
+        }
+
+        if (user.isBlocked) {
+            return res.status(400).send({ message: "sorry to inform you that your account has been permenantly blocked by the administrator.!" });
+        }
+        if (user.isDeleted) {
+            return res.status(201).send({ message: "your account has been deleted. If you want to recover the old account..!" });
+        }
+
+        let random_number = Math.floor(100000 + Math.random() * 900000);
+        // random_number = random_number.substring(-2);
+        var mailOptions = {
+            from: 'testpurpose20232023@gmail.com',
+            to: req.body.email,
+            subject: 'Forget Password',
+            text: 'Your Forget Password OTP : ' + random_number,
+        };
+
+        let responsemail = sendmail(mailOptions);
+
+        await Users.update(
+            { Otp: random_number },
+            {
+                where: {
+                    [Op.or]: [
+                        { email: req.body.email },
+                    ]
+                }
+            },
+        );
+
+        res.status(200).json({ message: "OTP send Successful", OTP: random_number, Email: req.body.email });
+
+    } catch (err) {
+        next(err);
+    }
+};
+
+
+const forgetotp = async (req, res, next) => {
+    try {
+
+        const requiredFields = ['email', 'OTP'];
+        for (const field of requiredFields) {
+            if (!req.body[field]) {
+                return res.status(400).json({ error: `${field} is required.` });
+            }
+        }
+
+        const user = await Users.findOne({
+            where: {
+                [Op.or]: [
+                    { email: req.body.email },
+                ]
+            }
+        });
+
+
+
+        if (!user) return res.status(404).send({ message: "User not found!" });
+
+        if (!user.isActive) {
+            return res.status(400).send({ message: "sorry to inform you that your account has been temporarily blocked by the administrator.!" });
+        }
+
+        if (user.isBlocked) {
+            return res.status(400).send({ message: "sorry to inform you that your account has been permenantly blocked by the administrator.!" });
+        }
+        if (user.isDeleted) {
+            return res.status(201).send({ message: "your account has been deleted. If you want to recover the old account..!" });
+        }
+
+        if (user.Otp != req.body.OTP) {
+            res.status(201).json({ message: "Invalid OTP.Please enter valid OTP.", Email: req.body.email });
+        }
+
+        if (user.Otp == req.body.OTP) {
+            res.status(200).json({ message: "OTP verify Successfully.", OTP: req.body.email, Email: req.body.email });
+        }
+
+    } catch (err) {
+        next(err);
+    }
+};
+
+const forgetPasschange = async (req, res, next) => {
+    try {
+
+        const requiredFields = ['email', 'Password'];
+        for (const field of requiredFields) {
+            if (!req.body[field]) {
+                return res.status(400).json({ error: `${field} is required.` });
+            }
+        }
+
+        const user = await Users.findOne({
+            where: {
+                [Op.or]: [
+                    { email: req.body.email },
+                ]
+            }
+        });
+
+
+
+        if (!user) return res.status(404).send({ message: "User not found!" });
+
+        if (!user.isActive) {
+            return res.status(400).send({ message: "sorry to inform you that your account has been temporarily blocked by the administrator.!" });
+        }
+
+        if (user.isBlocked) {
+            return res.status(400).send({ message: "sorry to inform you that your account has been permenantly blocked by the administrator.!" });
+        }
+        if (user.isDeleted) {
+            return res.status(201).send({ message: "your account has been deleted. If you want to recover the old account..!" });
+        }
+
+        // password hased
+        const salt = bcrypt.genSaltSync(10);
+        const hashpassword = bcrypt.hashSync(req.body.Password, salt);
+
+        await Users.update(
+            { Password: hashpassword },
+            {
+                where: {
+                    [Op.or]: [
+                        { email: req.body.email },
+                    ]
+                }
+            },
+        );
+
+        res.status(200).send({ message: "Your account Password change successfully." });
+    } catch (err) {
+        next(err);
+    }
+};
+
 module.exports = {
     register,
-    login
+    login,
+    forgetemail,
+    forgetotp,
+    forgetPasschange
 }

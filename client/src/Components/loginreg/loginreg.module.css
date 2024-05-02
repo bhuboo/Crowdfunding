@@ -41,7 +41,7 @@
     background: #ffffff !important;
     margin-left: 10% !important;
     width: 80% !important;
-    height: 56% !important;
+    /* height: 56% !important; */
     border-bottom-right-radius: 16px !important;
     border-bottom-left-radius: 16px !important;
     border-top-left-radius: 16px !important;
@@ -82,10 +82,11 @@
 }
 
 .login-container-section-one-sub-one label {
-    font-size: 16px !important;
+    font-size: 12px !important;
     color: #111111 !important;
     text-align: start !important;
     font-weight: bold !important;
+    width: 100%;
 }
 
 .login-container-section-one-sub-one input {
@@ -124,8 +125,8 @@
     align-items: center !important;
     background: #ffffff !important;
     margin-left: 10% !important;
-    width: 100% !important;
-    height: 74% !important;
+    width: 80% !important;
+    /* height: 74% !important; */
     border-bottom-right-radius: 16px !important;
     border-bottom-left-radius: 16px !important;
     border-top-left-radius: 16px !important;
@@ -138,14 +139,14 @@
 .register-container-section-one-sub-one {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: flex-start !important;
+    justify-content: center !important;
     align-items: center !important;
-    width: 48% !important;
+    width: 100% !important;
     margin-top: 20px !important;
 }
 
 .register-container-section-one-sub-one label {
-    font-size: 16px !important;
+    font-size: 12px !important;
     color: #111111 !important;
     text-align: start !important;
     font-weight: bold !important;
@@ -164,4 +165,40 @@
     background: #D4D7E3 !important;
     border: none !important;
     border-radius: 6px !important;
+}
+
+/* forget password screen styles */
+.forgetpasswordcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.forgetpasswordcontainer h6 {
+    text-align: center;
+    align-self: center;
+}
+
+.forgetpasswordcontainer p {
+    font-size: 12px;
+    text-align: start !important;
+    width: 80%;
+}
+
+.forgetpasswordcontainer label {
+    /* color: #51B56D; */
+    font-size: 14px;
+}
+
+.forgetpasswordcontainer input {
+    padding: 8px 4px !important;
+    margin-right: 12px !important;
+    margin-top: 8px;
+    font-size: 14px !important;
+    font-weight: lighter !important;
+    background: #D4D7E3 !important;
+    border: none !important;
+    border-radius: 6px !important;
+    width: 100%;
 }

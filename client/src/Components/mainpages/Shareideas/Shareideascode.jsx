@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Await, Link, useNavigate, useParams } from 'react-router-dom'
 import PaymentSucess from '../../../alertmessage/PaymentSucess';
 import PremiumPayment from '../../../Payments/PremiumPayment';
 import { AuthContext } from '../../../context/AuthContext';
 
 import TableElementCustom from '../../Elements/ShareIdeaPage/ShareIdeaTableElement.jsx'
-import { BussinessIdeaCreate, Initialapicall, PaymentUpdateStatus } from '../../../AxiosCallfunctions/Innovator/Sharedpage.js';
+import { BussinessIdeaCreate, Initialapicall, PaymentUpdateStatus, BussinessIdeaDelete } from '../../../AxiosCallfunctions/Innovator/Sharedpage.js';
 import { ArrowBack } from '@mui/icons-material';
 import { Button, Input } from '@mui/material';
 import CustomizedPaymentModal from '../../Elements/Payment/PaymentModal.jsx';
@@ -96,6 +96,14 @@ export default function Shareideascode() {
         reader.readAsDataURL(file);
     };
 
+
+    const handleDelete = async (e) => {
+        var response = await BussinessIdeaDelete(e);
+        if (response.status == 200) {
+            intitialandbussinessIdeaapi();
+        }
+    };
+
     const intitialandbussinessIdeaapi = () => {
         Initialapicall()
             .then((result) => {
@@ -181,7 +189,7 @@ export default function Shareideascode() {
                                         <div className='row justify-content-end align-items-center'>
                                             <Button onClick={() => setIdeasCount(!Ideascount)} className="btn btn-sm btn-primary mb-1" style={{ maxWidth: "140px", color: 'white', background: '#51B56D' }} type="submit">Create</Button>
                                         </div>
-                                        <TableElementCustom data={InitialState.bussinessIdea} api={intitialandbussinessIdeaapi} />
+                                        <TableElementCustom data={InitialState.bussinessIdea} api={intitialandbussinessIdeaapi} handleDelete={handleDelete} />
                                     </>
                                     :
                                     <>

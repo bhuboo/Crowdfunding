@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../context/AuthContext'
 import axios from "axios";
 
@@ -121,10 +121,7 @@ export default function loginreg() {
                                 value={credentials.Password}
                                 onChange={handleChange}
                             />
-                            {
-                                method &&
-                                <label className={styles['login-container-section-one-sub-label-foget']}>Forgot Password?</label>
-                            }
+
                         </div>
                         {
                             !method &&
@@ -157,6 +154,13 @@ export default function loginreg() {
                         >{method ? "Sign in" : "Sign up"}</button>
                         {error
                             && <span>{error.message}</span>
+                        }
+                        {
+                            method &&
+                            <Link className={styles['login-container-section-one-sub-label-foget']} to={'/Fpemail'}
+                                style={{ textAlign: 'end', height: 'auto', textDecoration: 'underline', width: '100%' }}>
+                                Forgot Password?
+                            </Link>
                         }
                         <label onClick={() => {
                             setmethod(!method);

@@ -10,6 +10,9 @@ const router = require('express').Router()
 //create new user router
 router.post('/register', authController.register)
 router.post('/login', authController.login)
+router.post('/forget', authController.forgetemail)
+router.post('/forgetOTP', authController.forgetotp)
+router.post('/forgetPasschange', authController.forgetPasschange)
 
 
 module.exports = router

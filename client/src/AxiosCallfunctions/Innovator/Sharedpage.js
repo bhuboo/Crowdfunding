@@ -95,3 +95,20 @@ export const BussinessIdeaDownloadFileGET = async (e) => {
 
     return response;
 }
+
+export const BussinessIdeaDelete = async (e) => {
+    let objectbody = {
+        UserId: JSON.parse(localStorage.getItem("user")).Id,
+        documentId: e
+    };
+
+    const headers = {
+        'Authorization': Bearertoken,
+        'Content-Type': 'application/json' // Adjust content type if needed
+    };
+
+    const response = await axios.post("innovator/BussinessIdeaDelete", objectbody, { headers });
+
+    return response;
+}
+

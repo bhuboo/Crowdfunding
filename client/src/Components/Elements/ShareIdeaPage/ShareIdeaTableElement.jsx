@@ -40,7 +40,7 @@ function createData(name, calories, fat, carbs, protein) {
 
 
 
-export default function CustomizedTables({ data, api }) {
+export default function CustomizedTables({ data, api, handleDelete }) {
 
     const [page, setPage] = React.useState(0);
     const [modalView, setmodalView] = React.useState(false);
@@ -112,7 +112,7 @@ export default function CustomizedTables({ data, api }) {
                                                     <Edit color="orange" />
                                                 </IconButton>
                                                 <IconButton aria-label="delete" size="large">
-                                                    <Delete color="error" />
+                                                    <Delete onClick={() => handleDelete(row.Id)} color="error" />
                                                 </IconButton>
                                             </StyledTableCell>
                                         </StyledTableRow>
